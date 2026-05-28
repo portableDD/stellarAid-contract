@@ -13,6 +13,9 @@ pub enum Error {
     InvalidAssetCode,         // asset_code must be non-empty and valid
     InvalidMilestones,        // milestones must be sorted ascending and last must equal goal
     MilestoneMismatch,        // last milestone.target_amount != goal_amount
+    InvalidMilestoneCount,    // milestone count must be 1-5
+    AlreadyInitialized,       // campaign already initialized
+    UnauthorizedCreator,      // caller is not the creator or lacks authorization
     
     // ── State transition errors ──
     InvalidCampaignTransition, // campaign status transition not allowed

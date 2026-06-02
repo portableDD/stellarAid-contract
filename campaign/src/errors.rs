@@ -1,28 +1,4 @@
-#[contracterror]
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub enum CampaignError {
-    Unauthorized = 1,
-
-    InvalidDeadline = 2,
-
-    ExtensionLimitExceeded = 3,
-
-    CampaignNotExtendable = 4,
-}
-
-#[contracterror]
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub enum CampaignError {
-    Unauthorized = 1,
-
-    CannotCancelWithFunds = 2,
-
-    CampaignAlreadyCancelled = 3,
-}
-
-#[contracterror]
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
-pub enum CampaignError {
-    CampaignEnded = 1,
-}
+// Errors are defined in `types::Error`.
+// This file is intentionally left empty — the single canonical Error enum
+// lives in types.rs to avoid duplicate definitions.
 

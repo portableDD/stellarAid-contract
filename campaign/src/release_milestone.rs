@@ -1,8 +1,7 @@
 use soroban_sdk::{Address, Env, token, panic_with_error};
 use crate::event;
 use crate::types::{Error, MilestoneStatus};
-use crate::storage::{get_campaign, get_milestone, set_milestone, is_frozen};
-use crate::storage::{acquire_lock, get_campaign, get_milestone, release_lock, set_milestone};
+use crate::storage::{acquire_lock, get_campaign, get_milestone, is_frozen, release_lock, set_milestone};
 
 /// Issue #207 – `release_milestone` function
 ///

@@ -62,7 +62,7 @@ fn fund_donor(env: &Env, donor: &Address) {
     let record = DonorRecord {
         donor: donor.clone(),
         total_donated: 500,
-        asset: AssetInfo::Native,
+        contributions: soroban_sdk::Vec::new(env),
         last_donation_time: env.ledger().timestamp(),
         last_donation_ledger: env.ledger().sequence(),
         donation_count: 1,
@@ -80,7 +80,7 @@ fn create_donor_record(
     let record = DonorRecord {
         donor: donor.clone(),
         total_donated,
-        asset: AssetInfo::Native,
+        contributions: soroban_sdk::Vec::new(env),
         last_donation_time: env.ledger().timestamp(),
         last_donation_ledger: env.ledger().sequence(),
         donation_count: 1,

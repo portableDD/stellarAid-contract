@@ -77,7 +77,7 @@ fn create_test_donor(
     let donor_record = DonorRecord {
         donor: donor.clone(),
         total_donated,
-        asset: AssetInfo::Native,
+        contributions: soroban_sdk::Vec::new(env),
         last_donation_time: 0,
         last_donation_ledger: 0,
         donation_count: 1,

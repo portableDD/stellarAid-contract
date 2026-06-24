@@ -54,6 +54,14 @@ pub fn milestone_released(
     env.events().publish(topics, (milestone_index, amount, asset_code, recipient, timestamp));
 }
 
+/// Issue #270 – Emitted when the admin is changed.
+pub fn admin_changed(env: &Env, old_admin: &Address, new_admin: &Address) {
+    env.events().publish(
+        ("campaign", "admin_changed"),
+        (old_admin, new_admin),
+    );
+}
+
 /// Issue #246 – Emitted when the contract is upgraded by the admin.
 pub fn contract_upgraded(env: &Env, admin: &Address, new_wasm_hash: soroban_sdk::BytesN<32>, timestamp: u64) {
     env.events().publish(

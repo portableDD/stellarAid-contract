@@ -1,6 +1,6 @@
 #![cfg(test)]
 
-use soroban_sdk::testutils::{Address as AddressTestUtils, MockToken};
+use soroban_sdk::testutils::Address as AddressTestUtils;
 use soroban_sdk::{Address, Env, Vec, String, BytesN};
 
 use crate::types::{CampaignData, CampaignStatus, StellarAsset, MilestoneData, MilestoneStatus};

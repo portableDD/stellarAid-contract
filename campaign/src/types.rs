@@ -1,6 +1,6 @@
 // src/types.rs
 
-use soroban_sdk::{contracttype, contracterror, Address, BytesN, String, Vec};
+use soroban_sdk::{contracttype, contracterror, Address, BytesN, Env, String, Vec};
 
 // ─── Error enum ───────────────────────────────────────────────────────────────
 
@@ -238,6 +238,11 @@ pub enum DataKey {
     ReentrancyLock,
     /// Freeze flag; present and true = contract is frozen, mutating ops blocked.
     Frozen,
+
+    // ── Admin ────────────────────────────────────────────────────────────────
+    /// Dedicated admin address (distinct from the campaign creator).
+    /// Set by `initialize` and transferable via `set_admin`.
+    Admin,
 }
 
 // ─── Asset types ──────────────────────────────────────────────────────────────

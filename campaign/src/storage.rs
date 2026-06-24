@@ -110,18 +110,7 @@ pub fn get_donor(env: &Env, donor: &Address) -> Option<DonorRecord> {
 /// Load a donor record or return a zeroed `DonorRecord`.
 /// Convenience wrapper — avoids `unwrap_or_default()` scattered across callers.
 pub fn get_donor_or_default(env: &Env, donor: &Address) -> DonorRecord {
-    get_donor(env, donor).unwrap_or_else(|| {
-        // Return a zeroed DonorRecord — caller should update the relevant fields
-        DonorRecord {
-            donor: donor.clone(),
-            total_donated: 0,
-            asset: crate::types::AssetInfo::Native,
-            last_donation_time: 0,
-            last_donation_ledger: 0,
-            donation_count: 0,
-            refund_claimed: false,
-        }
-    })
+    get_donor(env, donor).unwrap_or_else(|| DonorRecord::new_for(env, donor.clone()))
 }
 
 // ─── Per-asset donor donations ────────────────────────────────────────────────
@@ -283,6 +272,18 @@ pub fn acquire_lock(env: &Env) {
 /// Release the re-entrancy lock.
 pub fn release_lock(env: &Env) {
     env.storage().temporary().remove(&LOCK_KEY);
+}
+
+// ─── Admin ────────────────────────────────────────────────────────────────────
+
+/// Load the admin address. Returns `None` before the contract is initialised.
+pub fn get_admin(env: &Env) -> Option<Address> {
+    env.storage().instance().get(&DataKey::Admin)
+}
+
+/// Persist the admin address.
+pub fn set_admin(env: &Env, admin: &Address) {
+    env.storage().instance().set(&DataKey::Admin, admin);
 }
 
 // ─── Freeze flag (persistent) ─────────────────────────────────────────────────

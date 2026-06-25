@@ -1,5 +1,7 @@
 #![cfg(test)]
 
+mod formal_verification_tests;
+
 use soroban_sdk::testutils::Address as AddressTestUtils;
 use soroban_sdk::{Address, Env, Vec, String, BytesN};
 
